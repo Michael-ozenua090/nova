@@ -9,7 +9,7 @@ path('portfolio', portfolio, name='portfolio'),
 path('team', team, name='team'),
 path('blog', blog, name='blog'),
 path('contact', contact, name='contact'),
-path('portfollio-details', portfolio_details, name='portfolio_details'),
-path('blog-details', blog_details, name='blog_details')
+path('portfollio/details', portfolio_details, name='portfolio_details'),
+path('blog/details', blog_details, name='blog_details')
 
 ]
