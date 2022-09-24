@@ -1,0 +1,20 @@
+{% load static %}
+
+
+ <!-- ======= Breadcrumbs ======= -->
+ {% block breadcrumbs %}
+ 
+ <div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static 'general/img/services-header.jpg' %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+
+    <h2>{{ sub_title }}</h2>
+    <ol>
+      <li><a href="{% url 'homepage' %}">Home</a></li>
+      <li>{{ sub_title }}</li>
+    </ol>
+
+  </div>
+</div>
+
+ {% endblock breadcrumbs %}
+ <!-- End Breadcrumbs -->
