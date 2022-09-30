@@ -1,4 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib.auth import login, logout
+
+from general.models import CustomUser
+from .forms import CustomUserForm
+from .email_backend import EmailBackend
+from django.contrib import messages
 
 # Create your views here.
 def homepage(request):
@@ -74,3 +80,45 @@ def blog_details(request):
         
     }
     return render(request, 'general/blog-details.html', context)
+
+def loginpage(request):
+    context ={    }
+    if request.POST:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = EmailBackend.authenticate(request, username=username, password=password)
+        if user is None:
+            messages.error(request, 'INVALID EMAIL/PASSWORD')
+            return redirect(reverse('login_page'))
+        else:
+            login(request, user)
+            messages.success(request, 'ACCESS GRANTED!!')
+            return redirect(reverse('dashboard'))
+    return render(request, 'general/login.html', context)
+
+def logoutpage(request):
+    try:
+        logout(request)
+        messages.success(request, 'LOGGED OUT')
+        return redirect(reverse('login_page'))
+    except:
+        pass
+    return redirect(reverse('login_page'))
+
+def dashboard(request):
+    # users = CustomUser.Objects.all()
+    # context = {
+    #     'user_record' : users
+    # }
+    return render(request, 'general/dashboard.html')
+
+def registration(request):
+    form = CustomUserForm(request.POST or None, request.FILES or None)
+    context = {
+        'form': form
+    }
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('login_page'))
+    return render(request, 'general/registration.html', context)

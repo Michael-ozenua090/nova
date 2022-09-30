@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'general/partials/head.html' %}
+
+<body class="page-contact">
+
+    {% include 'general/partials/header.html' %}
+      
+    <main id="main">
+      
+        {% include 'general/partials/breadcrumbs.html' %}
+
+
+        {% if user.is_authenticated %}
+            <h1>WELCOME, {{ request.user }}.</h1>
+        {% else %}
+            <p>Welcome, new user. <a href="{% url 'login_page' %}">please log in</a></p>
+        {% endif %}
+
+        <p>First name: {{ user.first_name }}</p>
+        <p>Surname: {{ user.last_name }}</p>
+        <p>Phone number: {{ user.number }}</p>
+        <p>Email: {{ user.get_username }}</p>
+
+
+
+        <h2><a href="{% url 'logout_page' %}">LOGOUT</a></h2>
+
+    </main><!-- End #main -->
+
+    {% include 'general/partials/footer.html' %}
+  
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+    <div id="preloader"></div>
+  
+    {% include 'general/partials/scripts.html' %}
+
+   
+</body>
+</html>

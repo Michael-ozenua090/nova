@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'general/partials/head.html' %}
+
+<body class="page-index">
+
+{% include 'general/partials/header.html' %}
+
+<main id="main">
+
+  {% include 'general/partials/breadcrumbs.html' %}
+
+
+
+<div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Responsive Registration Form</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <table border="1">
+              {{ form.as_table }}
+  
+          </table>
+          <hr>
+          <input type="submit" value="Register" onclick="return confirm('Are you sure?')">
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+</main><!-- End #main -->
+
+{% include 'general/partials/footer.html' %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+{% include 'general/partials/scripts.html' %}
+
+</body>
+
+</html>

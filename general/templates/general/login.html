@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'general/partials/head.html' %}
+
+<body class="page-contact">
+
+    {% include 'general/partials/header.html' %}
+      
+    <main id="main">
+      
+        {% include 'general/partials/breadcrumbs.html' %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Username: <input type="text" name="username" required id=""></p>
+        <p>Password: <input type="text" name="password" required id=""></p>
+        <input type="submit" value="Login">
+
+    </form>
+
+    </main><!-- End #main -->
+
+    {% include 'general/partials/footer.html' %}
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
+    {% include 'general/partials/scripts.html' %}
+
+</body>
+</html>
