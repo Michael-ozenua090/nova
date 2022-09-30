@@ -82,7 +82,10 @@ def blog_details(request):
     return render(request, 'general/blog-details.html', context)
 
 def loginpage(request):
-    context ={    }
+    context = {
+        'title' : 'Nova - Login',
+         'sub_title' : 'Login',
+    }
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -106,16 +109,18 @@ def logoutpage(request):
     return redirect(reverse('login_page'))
 
 def dashboard(request):
-    # users = CustomUser.Objects.all()
-    # context = {
-    #     'user_record' : users
-    # }
-    return render(request, 'general/dashboard.html')
+    context = {
+        'title' : 'Nova - Dashboard',
+         'sub_title' : 'Dashboard',
+    }
+    return render(request, 'general/dashboard.html', context)
 
 def registration(request):
     form = CustomUserForm(request.POST or None, request.FILES or None)
     context = {
-        'form': form
+        'form': form,
+        'title' : 'Nova - Register',
+        'sub_title' : 'Register',
     }
     if request.POST:
         if form.is_valid():
