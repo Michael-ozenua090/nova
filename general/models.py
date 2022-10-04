@@ -34,9 +34,10 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(null=False, max_length=80)
     first_name = models.CharField(null=False, max_length=80)
     user_type = models.PositiveSmallIntegerField(default=1, choices=USER_TYPE,)
+    number = models.CharField(max_length=11)
+    image = models.ImageField(upload_to='images/general')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    number = models.CharField(max_length=11)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = CustomUserManager()

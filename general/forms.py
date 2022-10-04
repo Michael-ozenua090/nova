@@ -11,7 +11,7 @@ class CustomUserForm(ModelForm):
         }
     class Meta:
         model = CustomUser
-        fields = ('email', 'last_name', 'number', 'user_type', 'first_name', 'password')
+        fields = ('image', 'email', 'last_name', 'first_name', 'number', 'user_type',  'password')
 
     def clean_password(self):
         password = self.cleaned_data.get("password",None)
