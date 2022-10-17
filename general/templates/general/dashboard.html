@@ -15,7 +15,6 @@
         {% if request.user.is_authenticated %}
             <h1>WELCOME, {{ request.user }}.</h1>
             <p><img height="80" width="80" src="{{ user.image.url }}" alt="Profile Picture"></p>
-            <p>Profile Picture : {{ user.image }}</p>
             <p>First name: {{ user.first_name }}</p>
             <p>Surname: {{ user.last_name }}</p>
             <p>Phone number: {{ user.number }}</p>
